@@ -28,7 +28,7 @@ class GalleryCard extends LitElement {
          })}
         <ha-card .header=${this.config.title} class="menu-${menuAlignment}">
           <div class="resource-viewer" @touchstart="${ev => this._handleTouchStart(ev)}" @touchmove="${ev => this._handleTouchMove(ev)}">
-            <figure>
+            <div id="wrapper">
               ${
                 this._currentResource().isHass ?
                 html`<hui-image @click="${ev => this._popupCamera(ev)}"
@@ -40,11 +40,10 @@ class GalleryCard extends LitElement {
                 html`<img @click="${ev => this._popupImage(ev)}" src="${this._currentResource().url}"/>` :
                 html`<video controls src="${this._currentResource().url}#t=0.1" @loadedmetadata="${ev => this._videoMetadataLoaded(ev)}" @canplay="${ev => this._startVideo(ev)}"></video>`
               }
-              <figcaption>${this._currentResource().caption} 
+            </div>  
+            <div class="figure-caption-box">${this._currentResource().caption} 
                 ${this._isImageExtension(this._currentResource().extension) ?
-                  html`` : html`<span class="duration"></span>` }
-              </figcaption>
-            </figure>  
+                  html`` : html`<span class="duration"></span>` }</div>
             <button class="btn btn-left" @click="${ev => this._selectResource(this.currentResourceIndex-1)}">&lt;</button> 
             <button class="btn btn-right" @click="${ev => this._selectResource(this.currentResourceIndex+1)}">&gt;</button> 
           </div>
@@ -535,7 +534,25 @@ class GalleryCard extends LitElement {
       }
       img, video {
         width: 100%;
-        object-fit: contain;
+        object-fit: fill;
+        display: block;
+      }
+      .resource-viewer .figure-caption-box {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: var( --ha-picture-card-background-color, rgba(0, 0, 0, 0.5) );
+        padding: 4px 8px;
+        font-size: 16px;
+        line-height: 40px;
+        color: var(--ha-picture-card-text-color, white);
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: row;
       }
       .resource-viewer .btn {
         position: absolute;
@@ -548,9 +565,6 @@ class GalleryCard extends LitElement {
         border-radius: 5px;
         opacity: 0;
         transition: opacity .35s ease;
-      }
-      .resource-viewer figure{
-        margin: 0;
       }
       .resource-viewer:hover .btn {
         opacity: 1;
