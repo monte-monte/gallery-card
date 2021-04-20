@@ -572,7 +572,7 @@ class GalleryCard extends LitElement {
           width: 100%;
         }
         .menu-responsive .resource-viewer .btn {
-          top: 50%;
+          top: 33%;
         }
         .menu-responsive .resource-menu {
           width:100%; 
@@ -690,7 +690,7 @@ class GalleryCard extends LitElement {
         width: 100%;
       }
       .menu-hidden .resource-viewer .btn {
-        top: 33%;
+        top: 50%;
       }
       .menu-hidden .resource-menu {
         width:100%; 
