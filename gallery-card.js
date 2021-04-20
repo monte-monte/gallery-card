@@ -539,8 +539,6 @@ class GalleryCard extends LitElement {
       }
       .resource-viewer .btn {
         position: absolute;
-        transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
         background-color: #555;
         color: white;
         font-size: 16px;
@@ -551,16 +549,17 @@ class GalleryCard extends LitElement {
         opacity: 0;
         transition: opacity .35s ease;
       }
+      .resource-viewer figure{
+        margin: 0;
+      }
       .resource-viewer:hover .btn {
         opacity: 1;
       }
       .resource-viewer .btn-left {
         left: 0%;
-        margin-left: 65px;
       }
       .resource-viewer .btn-right {
         right: 0%;
-        margin-right: 30px
       }
       figure.selected {
         opacity: 0.5;
@@ -573,7 +572,7 @@ class GalleryCard extends LitElement {
           width: 100%;
         }
         .menu-responsive .resource-viewer .btn {
-          top: 33%;
+          top: 50%;
         }
         .menu-responsive .resource-menu {
           width:100%; 
@@ -720,7 +719,6 @@ class GalleryCard extends LitElement {
         margin: auto;
         display: block;
         width: 80%;
-        max-width: 700px;
       }
 
       /* Caption of Modal Image (Image Text) - Same Width as the Image */
@@ -728,7 +726,7 @@ class GalleryCard extends LitElement {
         margin: auto;
         display: block;
         width: 80%;
-        max-width: 700px;
+        max-width: 700px
         text-align: center;
         color: #ccc;
         padding: 10px 0;
