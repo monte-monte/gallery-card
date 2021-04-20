@@ -63,7 +63,7 @@ class GalleryCard extends LitElement {
                       html`<img src="${resource.url}"/>` :
                       html`<video src="${resource.url}#t=0.1" @loadedmetadata="${ev => this._videoMetadataLoaded(ev)}" ></video>`
                     }
-                    <div class="figure-caption-box>${resource.caption}</div>
+                    <div class="figure-caption-box">${resource.caption}</div>
                     </figure>
                 `;
             })}
